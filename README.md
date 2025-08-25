@@ -4,10 +4,137 @@
 It is inspired by surrealist practices such as the Surrealist *[cadavre exquis](https://www.tate.org.uk/art/art-terms/c/cadavre-exquis-exquisite-corpse)* game, [psychography](https://en.wikipedia.org/wiki/Automatic_writing), and devotional indexing.
 
 ## Status
-This is an early-stage project (initial scaffolding).  
-Functionality is not yet implemented-currently just project structure and setup files.
+This is an early-stage project (initial scaffolding). Functionality is not yet implemented-currently just project structure and setup files.
+
+## Corpus File Format
+Exquisite Corpus works with **corpora** (i.e. corpus files) that list found phrases and minimal metadata. Every corpus file **must** include the following columns:
+| Column                 | Type   | Description                                                                 |
+|------------------------|--------|-----------------------------------------------------------------------------|
+| `phrase_idx`           | string    | Auto-incremented index of each phrase (1, 2, 3, …).                         |
+| `phrase`               | string | Phrase text copied verbatim from a found source.                                     |
+| `phrase_recorded_date` | string | Date the phrase was logged in `YYYY-MM-DD` format.                          |
+| `phrase_reference_link`| string | Source URL where the phrase was found.    |
+
+### Supported formats
+
+- **CSV** (`.csv`) — comma separated values
+- **TSV** (`.tsv`) — tab separated values
+- **JSON** (`.json`) — an array of objects (one object per phrase)
+
+The loader will **auto-detect** the format from the file extension. If your file has no or a wrong extension, use the CLI override `--format`.
+
+### Examples
+
+**CSV**
+```csv
+phrase_idx,phrase,phrase_recorded_date,phrase_reference_link
+1,"to solemnly scatter",2024-07-12,https://sfstandard.com/2024/03/18/san-francisco-unclaimed-dead-ashes-scattering/
+2,"The disposition of their bodies is the unglamorous but critical work of the government.",2024-07-12,https://sfstandard.com/2024/03/18/san-francisco-unclaimed-dead-ashes-scattering/
+3,"Collection of indigent dead",2024-07-12,
+```
+
+**TSV**
+```tsv
+phrase_idx	phrase	phrase_recorded_date	phrase_reference_link
+1	to solemnly scatter	2024-07-12	https://sfstandard.com/2024/03/18/san-francisco-unclaimed-dead-ashes-scattering/
+2	The disposition of their bodies is the unglamorous but critical work of the government.	2024-07-12	https://sfstandard.com/2024/03/18/san-francisco-unclaimed-dead-ashes-scattering/
+3	Collection of indigent dead	2024-07-12	https://sfstandard.com/2024/03/18/san-francisco-unclaimed-dead-ashes-scattering/
+```
+
+**JSON**
+```json
+[
+  {
+    "phrase_idx": 1,
+    "phrase": "to solemnly scatter",
+    "phrase_recorded_date": "2024-07-12",
+    "phrase_reference_link": "https://sfstandard.com/2024/03/18/san-francisco-unclaimed-dead-ashes-scattering/"
+  },
+  {
+    "phrase_idx": 2,
+    "phrase": "The disposition of their bodies is the unglamorous but critical work of the government.",
+    "phrase_recorded_date": "2024-07-12",
+    "phrase_reference_link": "https://sfstandard.com/2024/03/18/san-francisco-unclaimed-dead-ashes-scattering/"
+  }
+]
+```
+
+## Installation
+
+Clone the repository and install dependencies:
+
+```bash
+git clone https://github.com/your-username/exquisite-corpus.git
+cd exquisite-corpus
+python -m venv venv
+source venv/bin/activate   # On Windows use venv\Scripts\activate
+pip install -e .
+```
+
+## Usage
+
+After installation, you can use the `excorpus` command-line interface (CLI) to
+work with corpus files.
+
+### Preview the first N rows of a corpus file
+
+```bash
+# Auto-detect format by file extension
+excorpus corpus head data/phrases.csv --rows 5
+excorpus corpus head data/phrases.tsv --rows 5
+excorpus corpus head data/phrases.json --rows 5
+
+# Force the format if the extension is missing or wrong
+excorpus corpus head data/phrases --format csv --rows 5
+excorpus corpus head data/noext.data --format json --rows 3
+```
+
+### Example outpt
+```bash
+[{'phrase_idx': 1, 'phrase': 'to solemnly scatter',
+  'phrase_recorded_date': '2024-07-12', 'phrase_reference_link': ''},
+ {'phrase_idx': 2, 'phrase': 'Her mouth is grimly set.',
+  'phrase_recorded_date': '2024-07-12', 'phrase_reference_link': ''}]
+
+```
+
+## Development
+
+If you want to contribute or work on the project locally, you’ll need to set up
+a development environment.
+
+### Running linting and tests
+
+Use [flake8](https://flake8.pycqa.org/) for linting and [pytest](https://pytest.org/) for tests:
+
+```bash
+flake8 src tests
+pytest -q
+```
+
+### Pre-commit hooks
+
+This repository uses [pre-commit](https://pre-commit.com/) to enforce
+consistent style (trailing whitespace, end-of-file newline, flake8 checks, etc.).
+
+Install pre-commit (once per machine):
+
+```bash
+pip install pre-commit
+```
+
+Set up the hooks in your local clone:
+```bash
+pre-commit install
+```
+
+Now, every time you run `git commit`, the hooks will automatically check and fix your code.
+You can also run them manually on all files:
+```bash
+pre-commit run --all-files
+```
 
 ## License
-This project is licensed under the 
-[Creative Commons Attribution-NonCommercial 4.0 International License](https://creativecommons.org/licenses/by-nc/4.0/).  
+This project is licensed under the
+[Creative Commons Attribution-NonCommercial 4.0 International License](https://creativecommons.org/licenses/by-nc/4.0/).
 You may share and adapt the code with attribution, but **commercial use is not permitted**.
