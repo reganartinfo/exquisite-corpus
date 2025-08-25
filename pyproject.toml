@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "exquisite_corpus"
+version = "0.0.2"
+description = "Found phrase poetry generation tool"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "Proprietary" }
+authors = [{ name = "Rae Egan", email = "rachel.fisher.egan@gmail.com" }]
+urls = { Homepage = "https://github.com/your-username/exquisite-corpus" }
+
+[project.scripts]
+excorpus = "exquisite_corpus.cli:main"
+
+[tool.flake8]
+max-line-length = 160
+extend-exclude = [
+    "venv",
+    ".venv",
+    "build",
+    "dist",
+    ".eggs",
+    "*.egg-info",
+    "__pycache__"
+]
+
+[tool.pytest.ini_options]
+addopts = "--cov src --cov-report term"
+testpaths = ["tests"]
+
+[tool.mypy]
+mypy_path = "src"
+ignore_missing_imports = true

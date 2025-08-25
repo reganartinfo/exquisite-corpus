@@ -1,1 +1,11 @@
+# Ignore compiled Python files created automatically when code runs
+__pycache__/
+*.py[cod]
+
+# Ignore the local virtual environment folder (i.e. your personal Python install for this project)
 venv/
+
+# Ignore build output folders created when you package or install your project
+build/
+dist/
+*.egg-info/
