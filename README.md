@@ -7,10 +7,11 @@ It is inspired by surrealist practices such as the Surrealist *[cadavre exquis](
 I am an artist, computational linguist, and ontologist/semantic data modeler by day/night. My practice moves between corpus linguistics, semantics, and etymology (eg., *tradurre è tradire* while passing flake8). This project is one small study in poetic computation for others to stich, fork, lint, translate, and betray.
 
 ## Status
-Functionality is not yet implemented-currently, just project structure and setup files.
+Functionality is in progress.
+Current features: canonical corpus (e.g., `data/canon.csv`), CLI for previewing corpora, and appending new phrases.
 
 ## Corpus File Format
-Exquisite Corpus works with **corpora** (i.e. corpus files) that list found phrases and minimal metadata. Every corpus file **must** include the following columns:
+*Exquisite Corpus* works with **corpora** (i.e. corpus files) that enumerate found phrases and minimal metadata. Every corpus file **must** include the following columns:
 | Column                 | Type   | Description                                                                 |
 |------------------------|--------|-----------------------------------------------------------------------------|
 | `phrase_idx`           | string    | Auto-incremented index of each phrase (1, 2, 3, …).                         |
@@ -62,6 +63,12 @@ phrase_idx	phrase	phrase_recorded_date	phrase_reference_link
 ]
 ```
 
+### Canonical Corpus
+
+This repository contains a **canonical corpus** (i.e. `data/canon.csv`). This file is the “canon” of *Exquisite Corpus*: an evolving archive and ritualized starting point for provocation, translation, testing, etc.
+
+Other corpora may be added under `data/corpora/`, while `canon.csv` remains the authoritative corpus of the initial cantor/coder.
+
 ## Installation
 
 Clone the repository and install dependencies:
@@ -98,7 +105,11 @@ excorpus corpus head data/noext.data --format json --rows 3
   'phrase_recorded_date': '2024-07-12', 'phrase_reference_link': ''},
  {'phrase_idx': 2, 'phrase': 'Her mouth is grimly set.',
   'phrase_recorded_date': '2024-07-12', 'phrase_reference_link': ''}]
+```
 
+### Appending to the canon
+```bash
+excorpus corpus append data/canon.csv data/new_phrases.csv --format csv
 ```
 
 ## Development

@@ -9,3 +9,6 @@ venv/
 build/
 dist/
 *.egg-info/
+
+# Ignore OS-specific system files
+.DS_Store
