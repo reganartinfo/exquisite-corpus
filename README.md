@@ -3,8 +3,11 @@
 *Exquisite Corpus* is an experimental poetry generation tool built from found phrases transfigured into annotated corpora.
 It is inspired by surrealist practices such as the Surrealist *[cadavre exquis](https://www.tate.org.uk/art/art-terms/c/cadavre-exquis-exquisite-corpse)* game, [psychography](https://en.wikipedia.org/wiki/Automatic_writing), and devotional indexing.
 
+## About
+I am an artist, computational linguist, and ontologist/semantic data modeler by day/night. My practice moves between corpus linguistics, semantics, and etymology. *Tradurre è tradire* while passing flake8. This project is one small study in poetic computation.
+
 ## Status
-This is an early-stage project (initial scaffolding). Functionality is not yet implemented-currently just project structure and setup files.
+Functionality is not yet implemented-currently, just project structure and setup files.
 
 ## Corpus File Format
 Exquisite Corpus works with **corpora** (i.e. corpus files) that list found phrases and minimal metadata. Every corpus file **must** include the following columns:
