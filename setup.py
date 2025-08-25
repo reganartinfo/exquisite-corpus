@@ -1,0 +1,15 @@
+setup(
+    name="exquisite_corpus",
+    version="0.0.1",
+    description="Found phrase poetry generation tool",
+    long_description=README.read_text(encoding="utf-8"),
+    long_description_content_type="text/markdown",
+    author="Rae Egan",
+    author_email="rachel.fisher.egan@gmail.com",
+    url="https://github.com/your-username/exquisite-corpus",
+    license="CC BY-NC 4.0",
+    packages=find_packages(where="src"),
+    package_dir={"": "src"},
+    python_requires=">=3.9",
+    include_package_data=True,
+)
