@@ -4,7 +4,7 @@
 It is inspired by surrealist practices such as the Surrealist *[cadavre exquis](https://www.tate.org.uk/art/art-terms/c/cadavre-exquis-exquisite-corpse)* game, [psychography](https://en.wikipedia.org/wiki/Automatic_writing), and devotional indexing.
 
 ## About
-I am an artist, computational linguist, and ontologist/semantic data modeler by day/night. My practice moves between corpus linguistics, semantics, and etymology (eg., *tradurre è tradire* while passing flake8). This project is one small study in poetic computation for others to fork, lint, translate, and betray.
+I am an artist, computational linguist, and ontologist/semantic data modeler by day/night. My practice moves between corpus linguistics, semantics, and etymology (eg., *tradurre è tradire* while passing flake8). This project is one small study in poetic computation for others to stich, fork, lint, translate, and betray.
 
 ## Status
 Functionality is not yet implemented-currently, just project structure and setup files.
