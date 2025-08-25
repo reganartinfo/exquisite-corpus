@@ -84,10 +84,9 @@ pip install -e .
 ## Usage
 
 After installation, you can use the `excorpus` command-line interface (CLI) to
-work with corpus files.
+work with files.
 
 ### Preview the first N rows of a corpus file
-
 ```bash
 # Auto-detect format by file extension
 excorpus corpus head data/phrases.csv --rows 5
@@ -111,11 +110,6 @@ excorpus corpus head data/noext.data --format json --rows 3
 ```bash
 excorpus corpus append data/canon.csv data/new_phrases.csv --format csv
 ```
-
-## Development
-
-If you want to contribute or work on the project locally, you’ll need to set up
-a development environment.
 
 ### Running linting and tests
 
