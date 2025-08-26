@@ -13,7 +13,7 @@ def main(argv=None):
     # Create the top-level parser for the CLI program
     parser = argparse.ArgumentParser(
         prog="excorpus",  # This is the command name users will type
-        description="Exquisite Corpus command-line tool"
+        description="Exquisite Corpus command-line (CLI) tool"
     )
 
     # Add support for subcommands under the top-level command
