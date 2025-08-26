@@ -34,7 +34,7 @@ The loader will **auto-detect** the format from the file extension. If your file
 phrase_idx,phrase,phrase_recorded_date,phrase_reference_link
 1,"to solemnly scatter",2024-07-12,https://sfstandard.com/2024/03/18/san-francisco-unclaimed-dead-ashes-scattering/
 2,"The disposition of their bodies is the unglamorous but critical work of the government.",2024-07-12,https://sfstandard.com/2024/03/18/san-francisco-unclaimed-dead-ashes-scattering/
-3,"Collection of indigent dead",2024-07-12,
+3,"Collection of indigent dead",2024-07-12, https://sfstandard.com/2024/03/18/san-francisco-unclaimed-dead-ashes-scattering/
 ```
 
 **TSV**
@@ -59,15 +59,21 @@ phrase_idx	phrase	phrase_recorded_date	phrase_reference_link
     "phrase": "The disposition of their bodies is the unglamorous but critical work of the government.",
     "phrase_recorded_date": "2024-07-12",
     "phrase_reference_link": "https://sfstandard.com/2024/03/18/san-francisco-unclaimed-dead-ashes-scattering/"
+  },
+  {
+    "phrase_idx": 3,
+    "phrase": "Collection of indigent dead",
+    "phrase_recorded_date": "2024-07-12",
+    "phrase_reference_link": "https://sfstandard.com/2024/03/18/san-francisco-unclaimed-dead-ashes-scattering/"
   }
 ]
 ```
 
 ### Canonical Corpus
 
-This repository contains a **canonical corpus** (i.e. `data/canon.csv`). This file is the “canon” of *Exquisite Corpus*: an evolving archive and ritualized starting point for provocation, translation, testing, etc.
+This repository contains a **canonical corpus** (i.e. `data/canon.csv`). This file is an evolving archive and ritualized starting point for provocation, translation, testing, etc.
 
-Other corpora may be added under `data/corpora/`, while `canon.csv` remains the authoritative corpus of the initial cantor/coder.
+Other corpora may be added under `data/corpora/`, while `canon.csv` remains an authoritative corpus of the initial cantor/coder.
 
 ## Installation
 
@@ -86,24 +92,25 @@ pip install -e .
 After installation, you can use the `excorpus` command-line interface (CLI) to
 work with files.
 
-### Preview the first N rows of a corpus file
+### Preview the first N rows of the canonical corpus
 ```bash
-# Auto-detect format by file extension
-excorpus corpus head data/phrases.csv --rows 5
-excorpus corpus head data/phrases.tsv --rows 5
-excorpus corpus head data/phrases.json --rows 5
+excorpus corpus head data/canon.csv --rows 3
 
 # Force the format if the extension is missing or wrong
-excorpus corpus head data/phrases --format csv --rows 5
-excorpus corpus head data/noext.data --format json --rows 3
+excorpus corpus head data/canon --format csv --rows 3
 ```
 
 ### Example outpt
 ```bash
 [{'phrase_idx': 1, 'phrase': 'to solemnly scatter',
-  'phrase_recorded_date': '2024-07-12', 'phrase_reference_link': ''},
- {'phrase_idx': 2, 'phrase': 'Her mouth is grimly set.',
-  'phrase_recorded_date': '2024-07-12', 'phrase_reference_link': ''}]
+  'phrase_recorded_date': '2024-07-12',
+  'phrase_reference_link': 'https://sfstandard.com/2024/03/18/san-francisco-unclaimed-dead-ashes-scattering/'},
+ {'phrase_idx': 2, 'phrase': 'The disposition of their bodies is the unglamorous but critical work of the government.',
+  'phrase_recorded_date': '2024-07-12',
+  'phrase_reference_link': 'https://sfstandard.com/2024/03/18/san-francisco-unclaimed-dead-ashes-scattering/'},
+ {'phrase_idx': 3, 'phrase': 'Collection of indigent dead',
+  'phrase_recorded_date': '2024-07-12',
+  'phrase_reference_link': 'https://sfstandard.com/2024/03/18/san-francisco-unclaimed-dead-ashes-scattering/'}]
 ```
 
 ### Appending to the canon
@@ -112,7 +119,6 @@ excorpus corpus append data/canon.csv data/new_phrases.csv --format csv
 ```
 
 ### Running linting and tests
-
 Use [flake8](https://flake8.pycqa.org/) for linting and [pytest](https://pytest.org/) for tests:
 
 ```bash
