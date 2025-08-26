@@ -127,7 +127,6 @@ pytest -q
 ```
 
 ### Pre-commit hooks
-
 This repository uses [pre-commit](https://pre-commit.com/) to enforce
 consistent style (trailing whitespace, end-of-file newline, flake8 checks, etc.).
 

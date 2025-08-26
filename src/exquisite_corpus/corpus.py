@@ -75,7 +75,7 @@ def load_corpus(path: str | Path, file_format: str = "auto"):
                 "tsv, or json."
             )
 
-# Load according to chosen format
+    # Load according to chosen format
     if choice == "csv":
         df = pd.read_csv(path)
     elif choice == "tsv":
@@ -85,7 +85,7 @@ def load_corpus(path: str | Path, file_format: str = "auto"):
     else:
         raise ValueError("file_format must be auto, csv, tsv, or json")
 
-# Validate required columns
+    # Validate required columns
     missing = [c for c in REQUIRED_COLUMNS if c not in df.columns]
     if missing:
         raise ValueError(f"Missing required columns: {missing}")
